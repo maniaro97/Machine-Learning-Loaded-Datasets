@@ -6,6 +6,23 @@ Created on Thu Jun  1 20:25:49 2023
 """
 
 import streamlit as st
+
+page_bg_img = f"""
+<style>
+[data-testid = "stAppViewContainer"]{{
+    background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v546batch3-mynt-34-badgewatercolor_1.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=89288ef4b47127f7f34a5998b50e4470");
+    background-size: cover;
+    opacity: 0.9;
+    }}
+[data-testid = "stSidebar"]{{
+    background-color: #E3D3CE;
+    opacity: 0.8;
+    filter: blur(0.2px);
+    }}
+
+</style>
+"""
+st.markdown(page_bg_img, unsafe_allow_html = True)
 import pandas as pd
 import os
 import pandas_profiling
@@ -16,7 +33,8 @@ from pycaret.classification import setup, compare_models, pull, save_model, Clas
 from pycaret.regression import setup, compare_models, pull, save_model, RegressionExperiment
 
 st.title("Machine Learning Application using Classification and Regression Models")
-
+logo='pycaret.png'
+    
 if os.path.exists("sourcev.csv"):
     df = pd.read_csv("sourcev.csv",index_col=None)
 
@@ -35,6 +53,7 @@ if choose=="Dataset":
     
     if selected_Datasets:
         df=pd.read_csv(selected_Datasets,index_col=None)
+        df.to_csv("sourcev.csv", index = None)
         st.dataframe(df)
         st.success('Dataset Suessfully Loaded')
     else:
@@ -42,7 +61,7 @@ if choose=="Dataset":
 
 if choose=="Analysis":
     st.write("Performing profiling on uploaded Dataset using pandas_profiling.")
-    if st.sidebar.button("Do Analysis"):
+    if st.button("Do Analysis"):
         st.header('Perform Analysis on Data:')
         profile_report = df.profile_report() 
         st_profile_report(profile_report)
