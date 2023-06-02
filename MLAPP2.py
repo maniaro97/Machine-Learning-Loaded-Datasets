@@ -56,7 +56,7 @@ if choose=="Dataset":
         df=pd.read_csv(selected_Datasets,index_col=None)
         df.to_csv("sourcev.csv", index = None)
         st.dataframe(df)
-        st.success('Dataset Suessfully Loaded')
+        st.success('Dataset Successfully Loaded')
     else:
         st.error('Error: No Dataset Avaialble')
 
