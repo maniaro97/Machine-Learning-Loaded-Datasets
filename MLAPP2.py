@@ -33,7 +33,6 @@ from pycaret.classification import setup, compare_models, pull, save_model, Clas
 from pycaret.regression import setup, compare_models, pull, save_model, RegressionExperiment
 
 st.title(":orange[**_Machine Learning Application using Classification and Regression Models_**]")
-
 logo='pycaret.png'
 
     
@@ -49,7 +48,7 @@ with st.sidebar:
     st.info("I have made this application which helps in building automated machine learning models using **:red[_streamlit, pandas, pandas_profiling(for EDA) and pycaret library._]** Hope ypu like it! :)")
     
 if choose=="Dataset":
-    st.write(":blue[_Please upload your dataset here. Only .csv files allowed_]")
+    st.write(":blue[_Please upload your dataset here. Only :red[.csv files] allowed_]")
     Available_Datasets=[filename for filename in os.listdir()if filename.endswith('.csv')]
     selected_Datasets=st.selectbox(':brown[Select Datasets]',Available_Datasets)
     
