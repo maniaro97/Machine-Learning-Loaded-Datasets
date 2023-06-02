@@ -34,6 +34,7 @@ from pycaret.regression import setup, compare_models, pull, save_model, Regressi
 
 st.title("Machine Learning Application using Classification and Regression Models")
 logo='pycaret.png'
+
     
 if os.path.exists("sourcev.csv"):
     df = pd.read_csv("sourcev.csv",index_col=None)
@@ -68,10 +69,10 @@ if choose=="Analysis":
     
 if choose=="Training":
     st.write("Start Training your Model now. Please choose classification or regression based on your model parameters.")
-    choice = st.sidebar.selectbox("Select your Technique:", ["Classification","Regression"])
     target = st.selectbox("Select you Target Variable",df.columns)
+    choice = st.selectbox("Select your Technique:", ["Classification","Regression"])
     if choice=="Classification":
-        if st.sidebar.button("Classification Train"):
+        if st.button("Classification Train"):
             s1 = ClassificationExperiment()
             s1.setup(data=df, target=target)
             setup_df = s1.pull()
@@ -86,7 +87,7 @@ if choose=="Training":
             best_model1
             s1.save_model(best_model1,"Machine Learning Model")
     else:
-        if st.sidebar.button("Regression Train"):
+        if st.button("Regression Train"):
             s2 = RegressionExperiment()
             s2.setup(data=df, target=target)
             setup_df = s2.pull()
