@@ -5,4 +5,5 @@ streamlit
 matplotlib
 pycaret
 pandas_profiling
+ydata_profiling
 streamlit_pandas_profiling
